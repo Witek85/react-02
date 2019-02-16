@@ -10,10 +10,10 @@ io.on('connection', (client) => {
     }, interval);
   });
 
-  // client.on('addClient', (param) => {
-  //   console.log('add', param)
-  //   io.emit('addServer');
-  // });
+  client.on('incrementClient', (param) => {
+    console.log('increment', param)
+    client.emit('incrementServer', param);
+  });
 });
 
 const port = 8000;
