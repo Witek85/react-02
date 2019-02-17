@@ -5,8 +5,9 @@ io.on('connection', (client) => {
 
   client.on('subscribeToTimer', (interval) => {
     console.log('timer subscribed');
+    client.emit('timer', {time: null, message: 'message sent'});
     setInterval(() => {
-      client.emit('timer', new Date());
+      client.emit('timer', {time: new Date(), message: 'message sent again'});
     }, interval);
   });
 

@@ -5,9 +5,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     subscribeToTimer((err, timestamp) => {
-      // console.log(err, timestamp)
       return this.setState({ 
-        timestamp: timestamp
+        timestamp: timestamp.time,
+        message: timestamp.message
       })
     });
     
@@ -20,6 +20,7 @@ class App extends Component {
   onClickHandler = (currentValue) => {
     console.log('-----click----');
     subscribeToCounter((value => {
+      console.log('returned', value)
       return this.setState({ counter: currentValue + value })
       // return this.setState((prevState) => ({ counter: prevState.counter + value}));
     }));
